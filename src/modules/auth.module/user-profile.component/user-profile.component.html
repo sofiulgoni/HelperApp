@@ -1,0 +1,77 @@
+<ion-header no-border>
+  <ion-navbar color="secondary">
+    <ion-title>Profile</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content class="content">
+  
+  <form #registerForm="ngForm">
+    <ion-list no-lines>
+
+      <ion-item class="image-box" text-center>
+        <img *ngIf="userInfo.image != undefined" src="{{userInfo.image}}">
+        <ion-icon *ngIf="userInfo.image == undefined" name="camera" style="font-size: 48px;" (click)="selectImage()"></ion-icon>
+      </ion-item>
+
+      <ion-item-divider no-lines color="light"><b>Personal information</b></ion-item-divider>
+
+      <ion-item>
+        <ion-input  type="text" placeholder="Full Name" name="name" [(ngModel)]="userInfo.name" required></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-input  type="number" placeholder="Mobile" name="mobile" [(ngModel)]="userInfo.mobile" required></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-input  type="number" placeholder="Zip code" name="zip" [(ngModel)]="userInfo.zip" required></ion-input>
+      </ion-item>
+      <ion-item *ngIf="userInfo.role == 'Cleaner'">
+        <ion-label fixed style="padding-left : 8px;">Gender</ion-label>
+        <ion-select [(ngModel)]="userInfo.cleanerInfo.gender" placeholder="Gender" name="gender" required>
+          <ion-option *ngFor="let gender of genderList" [value]="gender">
+            {{gender}}
+          </ion-option>
+        </ion-select>
+      </ion-item>
+
+      <div *ngIf=" userInfo.language != undefined"> 
+        <ion-item-divider no-lines color="light"><b>Languages i speak</b></ion-item-divider>
+
+        <ion-item *ngFor="let language of userInfo.language">
+          <ion-label>{{language.name}}</ion-label>
+          <ion-checkbox item-right color="primary" name="language" [(ngModel)]="language.active"></ion-checkbox>
+        </ion-item>
+      </div>
+
+      <div *ngIf="userInfo.role == 'Cleaner'">
+        <ion-item-divider no-lines color="light"><b>Company</b></ion-item-divider>
+
+        <ion-item>
+          <ion-input  type="text" placeholder="Company Name" name="companyName" [(ngModel)]="userInfo.cleanerInfo.companyName"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-input  type="text" placeholder="Company Website" name="companyWebsite" [(ngModel)]="userInfo.cleanerInfo.companyWebsite"></ion-input>
+        </ion-item>
+
+        <ion-item-divider no-lines color="light"><b>Finally, I want to tell customer that,</b></ion-item-divider>
+
+        <ion-item>
+          <ion-textarea  type="text" placeholder="Introduce yourself" name="intro" [(ngModel)]="userInfo.cleanerInfo.intro"></ion-textarea>
+        </ion-item>
+      </div>
+
+      <ion-item-divider no-lines color="light"></ion-item-divider>
+
+      <div text-center style="padding : 10px;">By tapping Next, you are indicating that you have read the Privacy Policy and agree to the Terms of Service.</div>
+    </ion-list>
+    
+  </form>
+  
+</ion-content>
+
+<ion-footer no-border>
+  <ion-toolbar transparent>
+    <button *ngIf="!update" ion-button color="secondary" block [disabled]="!registerForm.form.valid" (click)="saveUserData(userInfo)">Next</button>
+    <button *ngIf="update" ion-button color="secondary" block [disabled]="!registerForm.form.valid" (click)="updateUserData(userInfo)">Update</button> 
+  </ion-toolbar>
+</ion-footer>

@@ -1,0 +1,32 @@
+<ion-header>
+  <ion-navbar color="secondary">
+    <ion-title>Register</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content class="register-content" padding>
+  <ion-row class="logo-row">
+    <ion-col></ion-col>
+    <ion-col>
+      <img src="assets/imgs/logo.png"/>
+    </ion-col>
+    <ion-col></ion-col>
+  </ion-row>
+  
+  <div class="register-box">
+    <form (ngSubmit)="registerUser(email, password)" #registerForm="ngForm"> 
+      <ion-list inset>
+        <ion-item>
+          <ion-label stacked color="secondary">Email</ion-label>
+          <ion-input type="email" pattern="[A-Za-z0-9._%+-]{3,}@[a-zA-Z]{3,}([.]{1}[a-zA-Z]{2,}|[.]{1}[a-zA-Z]{2,}[.]{1}[a-zA-Z]{2,})" placeholder="example@gmail.com" name="email" [(ngModel)]="email" required></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label stacked color="secondary">Password</ion-label>
+          <ion-input type="password" placeholder="example123" name="password" [(ngModel)]="password" required></ion-input>
+        </ion-item>
+        <button ion-button block class="register-btn" color="secondary" type="submit" [disabled]="!registerForm.form.valid">Register</button>
+       </ion-list>
+    </form>
+  </div>
+  
+</ion-content>

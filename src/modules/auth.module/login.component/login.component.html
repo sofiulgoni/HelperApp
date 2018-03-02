@@ -1,6 +1,31 @@
 
-<ion-content padding>
-
-  <h2>Login Page</h2>
-
+<ion-content class="login-content" padding>
+  <ion-row class="logo-row">
+    <ion-col></ion-col>
+    <ion-col>
+      <img src="assets/imgs/logo.png"/>
+    </ion-col>
+    <ion-col></ion-col>
+  </ion-row>
+  
+  <div class="login-box">
+    <form (ngSubmit)="loginUser(email, password)" #loginForm="ngForm"> 
+      <ion-list inset>
+        <ion-item>
+          <ion-label stacked color="secondary">Email</ion-label>
+          <ion-input type="email" pattern="[A-Za-z0-9._%+-]{3,}@[a-zA-Z]{3,}([.]{1}[a-zA-Z]{2,}|[.]{1}[a-zA-Z]{2,}[.]{1}[a-zA-Z]{2,})" placeholder="example@gmail.com" name="email" [(ngModel)]="email" required></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label stacked color="secondary">Password</ion-label>
+          <ion-input type="password" placeholder="example123" name="password" [(ngModel)]="password" required></ion-input>
+        </ion-item>
+        <button ion-button block class="login-btn" color="secondary" type="submit" [disabled]="!loginForm.form.valid">Login</button>
+       </ion-list>
+    </form>
+    <ion-list inset>
+      <button ion-button block color="primary" (click)="registerUser()">I'm a new user</button>
+      <ion-label class="login-btn" text-center color="danger" (tap)="forgotPassword()"><b>Forgot password ?</b></ion-label>
+    </ion-list>
+  </div>
+  
 </ion-content>

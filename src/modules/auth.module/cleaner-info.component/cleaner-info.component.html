@@ -1,0 +1,40 @@
+<ion-header>
+  <ion-navbar color="secondary">
+    <ion-title>Preferences</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content class="content">
+  
+  <ion-list *ngIf="userInfo.cleanerInfo != undefined" no-lines style="margin-top : 20px;">
+
+    <ion-item-divider color="light" no-lines><b>I want to receive job notification</b></ion-item-divider>
+
+    <ion-item *ngFor="let service of userInfo.cleanerInfo.services">
+      <ion-label>{{service.name}}</ion-label>
+      <ion-checkbox item-right color="primary" [(ngModel)]="service.active"></ion-checkbox>
+    </ion-item>
+
+    <ion-item-divider color="light" no-lines><b>My preffered job location</b></ion-item-divider>
+    
+    <ion-list no-lines>
+      <ion-item text-wrap>You can add up to 5 job addresses (Ex. Appartment or Street address)</ion-item>
+      <ion-item no-lines *ngIf="userInfo.cleanerInfo.locations.length < 5">
+        <ion-input type="text" placeholder="New Job Location" [(ngModel)]="newLocation"></ion-input>
+        <button ion-button icon-only clear item-right (click)="addNewJobLocation(newLocation)"><ion-icon color="secondary" name="add-circle"></ion-icon></button>
+      </ion-item>
+      <ion-item *ngFor="let location of userInfo.cleanerInfo.locations">
+        <ion-label>{{location}}</ion-label>
+        <button ion-button icon-only clear item-right (click)="removeJobLocation(location)"><ion-icon color="danger" name="trash"></ion-icon></button>
+      </ion-item>
+    </ion-list>
+  </ion-list>
+  
+</ion-content>
+
+<ion-footer no-border>
+  <ion-toolbar transparent>
+    <button *ngIf="!update" ion-button color="secondary" block (click)="goToUserProfile(userInfo)">Next</button> 
+    <button *ngIf="update" ion-button color="secondary" block (click)="updateCleanerInfo(userInfo)">Update</button>
+  </ion-toolbar>
+</ion-footer>

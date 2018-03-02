@@ -1,0 +1,35 @@
+<ion-header>
+  <ion-navbar color="secondary">
+    <ion-title>Card Info</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content class="content">
+  <form #cardForm="ngForm">
+    <ion-list inset>
+      <ion-item>
+        <ion-label stacked color="secondary"><b>Card Number</b></ion-label>
+        <ion-input type="number" placeholder="Card Number" name="number" [(ngModel)]="cardInfo.number" required></ion-input>
+      </ion-item> 
+      <ion-item>
+        <ion-label stacked color="secondary"><b>CVC Number</b></ion-label>
+        <ion-input type="number" placeholder="CVC Number" name="cvc" [(ngModel)]="cardInfo.cvc" required></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label stacked color="secondary"><b>Expire Month</b></ion-label>
+        <ion-input type="number" placeholder="Expire Month" name="month" [(ngModel)]="cardInfo.expMonth" required></ion-input>
+      </ion-item> 
+      <ion-item>
+        <ion-label stacked color="secondary"><b>Expire Year</b></ion-label>
+        <ion-input type="number" placeholder="Expire year" name="year" [(ngModel)]="cardInfo.expYear" required></ion-input>
+      </ion-item>  
+    </ion-list>
+  </form>
+</ion-content>
+
+<ion-footer no-border>
+  <ion-toolbar transparent>
+    <button *ngIf="!update" ion-button block color="secondary" [disabled]="!cardForm.form.valid" (click)="saveCardInfo(cardInfo)">Save</button>
+    <button *ngIf="update" ion-button color="secondary" block [disabled]="!cardForm.form.valid" (click)="updateCardInfo(cardInfo)">Update</button>
+  </ion-toolbar>
+</ion-footer>

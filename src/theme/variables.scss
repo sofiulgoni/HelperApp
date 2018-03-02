@@ -45,15 +45,21 @@ $colors: (
 // App iOS Variables
 // --------------------------------------------------
 // iOS only Sass variables can go here
-
-
+$tabs-ios-tab-text-color-active : color($colors, secondary);
+$tabs-ios-tab-icon-color-active : color($colors, secondary);
+$loading-ios-background         : color($colors, dark);
+$loading-ios-spinner-dots-color : color($colors, secondary);
+$toast-ios-title-color          : color($colors, secondary);
 
 
 // App Material Design Variables
 // --------------------------------------------------
 // Material Design only Sass variables can go here
-
-
+$tabs-md-tab-text-color-active : color($colors, secondary);
+$tabs-md-tab-icon-color-active : color($colors, secondary);
+$loading-md-background         : color($colors, dark);
+$loading-md-spinner-dots-color : color($colors, secondary);
+$toast-md-title-color          : color($colors, secondary);
 
 
 // App Windows Variables

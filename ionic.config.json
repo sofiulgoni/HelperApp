@@ -2,5 +2,7 @@
   "name": "HelperApp",
   "app_id": "1411824c",
   "type": "ionic-angular",
-  "integrations": {}
+  "integrations": {
+    "cordova": {}
+  }
 }

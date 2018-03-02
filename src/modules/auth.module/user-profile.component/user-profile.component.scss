@@ -1,0 +1,16 @@
+page-user-profile {
+    .content{
+        background: color($colors, light);
+        .image-box{
+          height: 150px;
+          background: color($colors, secondary);
+        }
+        img{
+          display: block;
+          margin: auto;
+          border-radius: 50px;
+          height: 100px;
+          width: 100px;
+        }
+    }
+}

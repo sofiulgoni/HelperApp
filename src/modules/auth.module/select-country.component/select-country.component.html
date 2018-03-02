@@ -1,0 +1,18 @@
+<ion-header>
+  <ion-navbar color="secondary">
+    <ion-title>Country</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content class="content">
+  <div class="user-div">
+    <div text-center style="font-size : 25px;">Select your country</div>
+    <ion-list no-lines>
+      <ion-item *ngFor="let country of countryList" (click)="onCountrySelect(country)">
+        <h2><b>{{country.name}}</b></h2>
+      </ion-item>
+    </ion-list>
+  </div>
+  
+  
+</ion-content>

@@ -1,7 +1,13 @@
-<ion-tabs>
+<ion-tabs *ngIf="userRole == 'Customer'">
   <ion-tab [root]="tab1Root" tabTitle="Home" tabIcon="home" tabsHideOnSubPages="true"></ion-tab>
   <ion-tab [root]="tab2Root" tabTitle="Order" tabIcon="list" tabsHideOnSubPages="true"></ion-tab>
   <ion-tab [root]="tab3Root" tabTitle="Chat" tabIcon="chatbubbles" tabsHideOnSubPages="true"></ion-tab>
   <ion-tab [root]="tab4Root" tabTitle="Offer" tabIcon="heart" tabsHideOnSubPages="true"></ion-tab>
+  <ion-tab [root]="tab5Root" tabTitle="More" tabIcon="more" tabsHideOnSubPages="true"></ion-tab>
+</ion-tabs>
+<ion-tabs *ngIf="userRole != 'Customer'">
+  <ion-tab [root]="tab6Root" tabTitle="Home" tabIcon="notifications" tabsHideOnSubPages="true"></ion-tab>
+  <ion-tab [root]="tab7Root" tabTitle="Job" tabIcon="calendar" tabsHideOnSubPages="true"></ion-tab>
+  <ion-tab [root]="tab3Root" tabTitle="Chat" tabIcon="chatbubbles" tabsHideOnSubPages="true"></ion-tab>
   <ion-tab [root]="tab5Root" tabTitle="More" tabIcon="more" tabsHideOnSubPages="true"></ion-tab>
 </ion-tabs>
